@@ -12,12 +12,12 @@ namespace MediaPipe.FaceLandmark
         // RenderTexture.ReleaseTemporary.
         //
         public static RenderTexture
-          CopyOutputToTempRT(this IWorker worker, int w, int h)
+          CopyOutputToTempRT(this IWorker worker, string name, int w, int h)
         {
             var fmt = RenderTextureFormat.RFloat;
             var shape = new TensorShape(1, h, w, 1);
             var rt = RenderTexture.GetTemporary(w, h, 0, fmt);
-            using (var tensor = worker.PeekOutput().Reshape(shape))
+            using (var tensor = worker.PeekOutput(name).Reshape(shape))
                 tensor.ToRenderTexture(rt);
             return rt;
         }

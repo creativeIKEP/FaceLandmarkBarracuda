@@ -90,7 +90,7 @@ namespace MediaPipe.FaceLandmark
 
             // Postprocessing
             var post = _resources.postprocess;
-            var tempRT = _worker.CopyOutputToTempRT(1, VertexCount * 3);
+            var tempRT = _worker.CopyOutputToTempRT("output_mesh_identity", 1, VertexCount * 3);
             post.SetTexture(0, "_Tensor", tempRT);
             post.SetBuffer(0, "_Vertices", _postBuffer);
             post.Dispatch(0, VertexCount / 52, 1, 1);

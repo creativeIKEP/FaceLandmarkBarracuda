@@ -16,12 +16,7 @@ network inference library.
 About the ONNX file
 -------------------
 
-The ONNX model file contained in this repository was converted using the
-[this Colab notebook]. It's also used to solve some ONNX compatibility
-issues. Please check the notebook for further details.
-
-[this Colab notebook]:
-  https://colab.research.google.com/drive/1C6zEB3__gcHEWnWRm-b4jIA0srA1gkyq?usp=sharing
+The ONNX model file contained in this repository was downloaded with this [script](https://github.com/PINTO0309/PINTO_model_zoo/blob/f15a1e145ad5f51bc38b55ad6c09bf4782f211dd/282_face_landmark_with_attention/download_barracuda.sh) in the [PINTO_model_zoo](https://github.com/PINTO0309/PINTO_model_zoo) repository.
 
 Acknowledgements
 ----------------
