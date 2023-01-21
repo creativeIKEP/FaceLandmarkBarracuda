@@ -37,7 +37,7 @@
       }
     },
     "jp.ikep.mediapipe.facelandmark": {
-      "version": "file:jp.keijiro.mediapipe.facelandmark",
+      "version": "file:FaceLandmarkBarracuda",
       "depth": 0,
       "source": "embedded",
       "dependencies": {

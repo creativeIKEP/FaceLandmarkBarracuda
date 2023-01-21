@@ -7,7 +7,7 @@
     "com.unity.barracuda": "3.0.0"
   },
   "description": "MediaPipe face landmark detection neural network model for Unity Barracuda",
-  "displayName": "MediaPipe Face Landmark Detector",
+  "displayName": "FaceLandmarkBarracuda",
   "keywords": [
     "unity"
   ],
