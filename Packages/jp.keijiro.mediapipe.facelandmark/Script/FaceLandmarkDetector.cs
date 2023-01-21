@@ -177,6 +177,16 @@ namespace MediaPipe.FaceLandmark
         }
 
         #endregion
+
+        // Extract the vector in the 4 dimensions Tensor as a Compute Buffer.
+        ComputeBuffer TensorToBuffer(string name, int length)
+        {
+            var shape = new TensorShape(length);
+            var tensor = _worker.PeekOutput(name).Reshape(shape);
+            var buffer = ((ComputeTensorData)tensor.data).buffer;
+            tensor.Dispose();
+            return buffer;
+        }
     }
 
 } // namespace MediaPipe.FaceLandmark
