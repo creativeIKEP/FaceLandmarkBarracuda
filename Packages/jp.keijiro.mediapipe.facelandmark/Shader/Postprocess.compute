@@ -1,9 +1,11 @@
 #pragma kernel Postprocess
+#pragma kernel PostprocessF2
 
 // 
 // Postprocessor (tensor to vertex list conversion)
 //
 
+#define IMAGE_SIZE 192
 #define VERTEX_COUNT 468
 
 // Input
@@ -17,9 +19,22 @@ void Postprocess(uint id : SV_DispatchThreadID)
 {
     uint offs = (VERTEX_COUNT - 1 - id) * 3;
 
-    float x =     _Tensor[uint2(0, offs + 2)] / 192;
-    float y = 1 - _Tensor[uint2(0, offs + 1)] / 192;
-    float z =     _Tensor[uint2(0, offs + 0)] / 192;
+    float x =     _Tensor[uint2(0, offs + 2)] / IMAGE_SIZE;
+    float y = 1 - _Tensor[uint2(0, offs + 1)] / IMAGE_SIZE;
+    float z =     _Tensor[uint2(0, offs + 0)] / IMAGE_SIZE;
 
     _Vertices[id] = float4(x, y, z, 1);
+}
+
+// kernel 1
+uint _TargetVertexCount;
+RWStructuredBuffer<float2> _Vertices_F2;
+
+[numthreads(1, 1, 1)]
+void PostprocessF2(uint id : SV_DispatchThreadID)
+{
+    uint offs = (_TargetVertexCount - 1 - id) * 2;
+    float x = _Tensor[uint2(0, offs + 1)] / IMAGE_SIZE;
+    float y = 1 - _Tensor[uint2(0, offs + 0)] / IMAGE_SIZE;
+    _Vertices_F2[id] = float2(x, y);
 }
